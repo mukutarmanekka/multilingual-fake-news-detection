@@ -1,0 +1,80 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual Environments
+venv/
+.venv/
+env/
+**/venv/
+**/.venv/
+**/env/
+pipeline/venv/
+
+# Environment variables & Secrets
+.env
+.env.*
+*.env
+!.env.example
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing & Coverage
+.pytest_cache/
+**/.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+.ruff_cache/
+.mypy_cache/
+
+# Databases & Vector Storage
+postgres_data/
+redis_data/
+qdrant_data/
+.qdrant_storage/
+**/.qdrant_storage/
+*.sqlite
+*.sqlite3
+*.db
+!db/init.sql
+
+# ML Models & Large Weights (prevent GitHub 100MB limit rejection)
+model_cache/
+**/model_cache/
+.cache/
+**/.cache/
+*.pt
+*.pth
+*.bin
+*.onnx
+*.safetensors
+*.h5
+
+# Logs
+*.log
+**/*.log
+pipeline/pipeline.log
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Packaging & Distribution
+dist/
+build/
+*.egg-info/
+node_modules/
+

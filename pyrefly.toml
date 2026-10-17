@@ -1,0 +1,12 @@
+project-includes = ["pipeline/**/*.py"]
+project-excludes = [
+    "**/__pycache__",
+    "**/*venv/**",
+    "venv/**",
+    "pipeline/venv/**",
+]
+
+search-path = ["pipeline"]
+python-interpreter-path = "pipeline/venv/Scripts/python.exe"
+python-platform = "windows"
+python-version = "3.13"
