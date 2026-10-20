@@ -235,9 +235,22 @@ INSERT INTO sources (domain, name, tier, credibility, description) VALUES
     ('nature.com',          'Nature',                       'TIER_2', 0.95, 'Scientific journal'),
     ('science.org',         'Science',                      'TIER_2', 0.95, 'Scientific journal'),
     ('thelancet.com',       'The Lancet',                   'TIER_2', 0.94, 'Medical journal'),
-    -- Tier 2: Fact-Checkers
     ('snopes.com',          'Snopes',                       'TIER_2', 0.88, 'Fact-checking site'),
     ('politifact.com',      'PolitiFact',                   'TIER_2', 0.87, 'Political fact-checker'),
     ('factcheck.org',       'FactCheck.org',                'TIER_2', 0.88, 'Non-partisan fact-checker'),
-    ('fullfact.org',        'Full Fact',                    'TIER_2', 0.87, 'UK fact-checker')
+    ('fullfact.org',        'Full Fact',                    'TIER_2', 0.87, 'UK fact-checker'),
+    -- Blacklisted: Known Troll, Satire & Parody Outlets
+    ('thefauxy.com',             'The Fauxy',                    'BLACKLISTED', 0.00, 'Indian satirical news site'),
+    ('fauxy.com',                'The Fauxy',                    'BLACKLISTED', 0.00, 'Indian satirical news site'),
+    ('fakingnews.com',           'Faking News',                  'BLACKLISTED', 0.00, 'Indian satirical news site'),
+    ('theunrealtimes.com',       'The UnReal Times',             'BLACKLISTED', 0.00, 'Indian political satire'),
+    ('theonion.com',             'The Onion',                    'BLACKLISTED', 0.00, 'American satirical news site'),
+    ('onion.com',                'The Onion',                    'BLACKLISTED', 0.00, 'American satirical news site'),
+    ('babylonbee.com',           'The Babylon Bee',              'BLACKLISTED', 0.00, 'Satirical news site'),
+    ('clickhole.com',            'ClickHole',                    'BLACKLISTED', 0.00, 'Satirical clickbait site'),
+    ('thebeaverton.com',         'The Beaverton',                'BLACKLISTED', 0.00, 'Canadian satirical publication'),
+    ('thechaser.com.au',         'The Chaser',                   'BLACKLISTED', 0.00, 'Australian satirical news'),
+    ('betootaadvocate.com',      'The Betoota Advocate',         'BLACKLISTED', 0.00, 'Australian satirical newspaper'),
+    ('worldnewsdailyreport.com', 'World News Daily Report',      'BLACKLISTED', 0.00, 'Fabricated hoax news site'),
+    ('huzlers.com',              'Huzlers',                      'BLACKLISTED', 0.00, 'Fabricated sensational fake news')
 ON CONFLICT (domain) DO NOTHING;

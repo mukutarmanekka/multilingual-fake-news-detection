@@ -46,6 +46,7 @@ CRITICAL RULES:
 - If sources disagree, say CONFLICTING.
 - Cite exact snippets from the evidence.
 - Each reasoning step must reference a specific evidence document.
+- Be vigilant against satire, parody, or troll news stories that fabricate claims for humor.
 
 VERDICT VALUES: SUPPORTED, REFUTED, NOT_ENOUGH_EVIDENCE, CONFLICTING
 

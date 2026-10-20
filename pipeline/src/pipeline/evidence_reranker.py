@@ -16,6 +16,7 @@ from ..models.schemas import (
     RerankedEvidenceResult,
 )
 from ..utils.temporal import freshness_score, is_time_sensitive
+from ..utils.source_credibility import is_blacklisted
 from ..config import settings
 
 logger = structlog.get_logger()
@@ -58,6 +59,33 @@ async def rerank_evidence(
 
     docs = evidence.retrieved_documents
     if not docs:
+        return RerankedEvidenceResult(claim_id=evidence.claim_id, ranked_evidence=[])
+
+    # ── Filter out blacklisted / troll / satire sources ──────────
+    valid_docs = []
+    dropped_satire = 0
+    for doc in docs:
+        if doc.credibility_score <= 0.0 or is_blacklisted(doc.source_domain or doc.url):
+            dropped_satire += 1
+            logger.info(
+                "evidence_reranker.dropped_blacklisted_source",
+                claim_id=evidence.claim_id,
+                domain=doc.source_domain,
+                url=doc.url,
+            )
+        else:
+            valid_docs.append(doc)
+
+    if dropped_satire > 0:
+        logger.info(
+            "evidence_reranker.satire_sources_filtered",
+            claim_id=evidence.claim_id,
+            filtered_count=dropped_satire,
+        )
+
+    docs = valid_docs
+    if not docs:
+        logger.info("evidence_reranker.no_valid_credible_sources", claim_id=evidence.claim_id)
         return RerankedEvidenceResult(claim_id=evidence.claim_id, ranked_evidence=[])
 
     time_sensitive = is_time_sensitive(claim_text)
